@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<films>
+    <film>
+        <title>Joker</title>
+        <genre>dramat</genre>
+        <year>2019</year>
+        <personal_rating>6</personal_rating>
+        <director gender="male">Todd Philips</director>
+        <actors>
+            <actor gender="male">
+                <name>Joaquin</name>
+                <surname>Phoenix</surname>
+            </actor>
+            <actor gender="female">
+                <name>Zazie</name>
+                <surname>Beetz</surname>
+            </actor>
+        </actors>
+    </film>
+    <film>
+        <title>Boże Ciało</title>
+        <genre>obyczajowy</genre>
+        <year>2019</year>
+        <personal_rating>7</personal_rating>
+        <director gender="male">Jan Komasa</director>
+        <actors>
+            <actor gender="male">
+                <name>Bartosz</name>
+                <surname>Bielenia</surname>
+            </actor>
+            <actor gender="female">
+                <name>Barbara</name>
+                <surname>Kurzaj</surname>
+            </actor>
+        </actors>
+    </film>
+    <film>
+        <title>El Camino</title>
+        <genre>dramat</genre>
+        <year>2019</year>
+        <personal_rating>8</personal_rating>
+        <director gender="male">Vince Villigan</director>
+        <actors>
+            <actor gender="male">
+                <name>Aaron</name>
+                <surname>Paul</surname>
+            </actor>
+            <actor gender="male">
+                <name>Charles</name>
+                <surname>Baker</surname>
+            </actor>
+        </actors>
+    </film>
+    <film>
+        <title>Czarownica 2</title>
+        <genre>fantasy</genre>
+        <year>2019</year>
+        <personal_rating>9</personal_rating>
+        <director gender="male">Joachim Rønning</director>
+        <actors>
+            <actor gender="female">
+                <name>Angelina</name>
+                <surname>Jolie</surname>
+            </actor>
+            <actor gender="female">
+                <name>Elle</name>
+                <surname>Fanning</surname>
+            </actor>
+        </actors>
+    </film>
+    <film>
+        <title>Pralnia</title>
+        <genre>dramat</genre>
+        <year>2019</year>
+        <personal_rating>10</personal_rating>
+        <director gender="male">Steven Soderbergh</director>
+        <actors>
+            <actor gender="male">
+                <name>Gary</name>
+                <surname>Oldman</surname>
+            </actor>
+            <actor gender="female">
+                <name>Meryl</name>
+                <surname>Streep</surname>
+            </actor>
+        </actors>
+    </film>
+</films>

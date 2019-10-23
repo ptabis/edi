@@ -22,4 +22,11 @@
 		<phone type="work">6660611</phone>
 		<notes>my best friend</notes>
 	</contact>
+	<contact>
+		<name>Jan</name>
+		<surname>Nowak</surname>
+		<email type="personal">jan@nowak.eu</email>
+		<phone type="phone">111222333</phone>
+		<address>ul. Rakowicka 34, Kraków</address>
+	</contact>
 </contacts>
