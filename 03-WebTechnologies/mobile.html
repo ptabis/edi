@@ -6,7 +6,25 @@
 	</head>
 	<body>
 		<h1>Create mobile phone</h1>
+		<button id="button"></button>
 		<script>
+			let Phone = {
+				name: "Telefon",
+				imei: 132412342134,
+				hasNFC: true,
+				cameras: ["front", "back"],
+				additionalInfo: {
+					"java": 1.5
+				}
+			}
+			function show() {
+				alert("Name: "+Phone.name
+				+"\nIMEI: "+Phone.imei
+				+"\nNFC: "+Phone.hasNFC
+				+"\nCamera: "+Phone.cameras[0]+","+Phone.cameras[1]
+				+"\nAdditional: "+Phone.additionalInfo.java)
+			}
+			document.getElementById("button").addEventListener("click", show);
 		</script>
 	</body>
 </html>

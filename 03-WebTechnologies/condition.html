@@ -11,7 +11,13 @@
 		<script>
 			// enter your name, surname
 			// ...
-			
+			let name = prompt("Podaj imię:");
+			let surname = prompt("Podaj nazwisko: ");
+			let age = prompt("Podaj wiek: ");
+			if(confirm("Dane prawidłowe?")) {
+				console.log(name+" "+surname+" "+age);
+				alert(name+" "+surname+" "+age)
+			}
 			// display your personal data on the console
 			// ...
 			
