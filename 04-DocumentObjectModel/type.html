@@ -24,7 +24,24 @@
 		
 		<script>
 			// a JavaScript code here ...
-			
+			let start = 0
+			let txtarea = document.getElementsByTagName('textarea')[0]
+			txtarea.onkeydown = () => {
+				if(start == 1) return 0
+				start = 1
+				setTimeout(() => {
+					let txt = txtarea.value
+					let words = txt.split(' ')
+					let letters = 0
+					for(let i = 0; i < words.length; i++) {
+						letters += words[i].length
+					}
+					let p = document.createElement('p')
+					p.innerText = words.length+" wyrazów i "+letters+" liter."
+					document.body.appendChild(p)
+					start = 0
+				}, 30000)
+			}
 		</script>
 		
 	</body>

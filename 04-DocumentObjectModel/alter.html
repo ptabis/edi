@@ -21,7 +21,34 @@
 		
 		<script>
 			// a JavaScript code here ...
-			
+			let songTitle = document.getElementsByTagName('h1')[0]
+			let bandName = document.getElementsByTagName('h3')[0]
+			let lyrics = document.getElementsByTagName('p')[0]
+			let bandDescription = document.getElementsByTagName('p')[1]
+
+			songTitle.onclick = () => {
+				if(songTitle.innerText.includes("(Part 2)")) return 0
+				songTitle.innerHTML += " (Part 2)"
+			}
+			bandName.onclick = () => {
+				document.getElementsByTagName('p')[1].style.visibility = 'visible';
+			}
+			lyrics.onclick = () => {
+				lyrics.style.fontStyle = "italic"
+			}
+			lyrics.oncopy = () => {
+				alert("copyright")
+			}
+			document.body.ondblclick = () => {
+				document.body.style.backgroundColor = 'yellow'
+			}
+			bandDescription.onclick = () => {
+				let img = document.createElement('img')
+				let br = document.createElement('br')
+				img.src = "https://upload.wikimedia.org/wikipedia/en/d/d6/Pink_Floyd_-_all_members.jpg"
+				bandDescription.appendChild(br)
+				bandDescription.appendChild(img)
+			}
 		</script>
 	</body>
 </html>

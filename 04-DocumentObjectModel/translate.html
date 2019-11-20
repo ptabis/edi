@@ -11,7 +11,12 @@
 			
 			// Translation:
 			// Kije i kamienie kości mi połamią, ale twoje słowa nigdy mnie nie zranią
-			
+			document.getElementsByTagName('h3')[0].onmouseover = () => {
+				document.getElementsByTagName('h3')[0].innerHTML = "Kije i kamienie kości mi połamią, ale twoje słowa nigdy mnie nie zranią."
+			}
+			document.getElementsByTagName('h3')[0].onmouseout = () => {
+				document.getElementsByTagName('h3')[0].innerHTML = "Sticks and stones may break my bones, but words will never harm me."
+			}
 		</script>
 	</body>
 </html>

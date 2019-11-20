@@ -7,7 +7,28 @@
 	<body>
 		<script>
 			// a JavaScript code here ...
-			
+			let table = document.createElement('table')
+			table.style.borderWidth = '1px'
+			table.style.borderStyle = 'solid'
+			table.style.borderCollapse = 'collapse'
+			let n = 1
+			for(let i = 0; i < 2; i++) {
+				let tr = document.createElement('tr')
+				tr.style.margin = 0
+				for(let j = 0; j < 2; j++) {
+					let td = document.createElement('td')
+					td.innerText = n
+					td.style.borderWidth = '1px'
+					td.style.borderStyle = 'solid'
+					td.width = 150
+					td.height = 20
+					td.style.textAlign = 'center'
+					tr.appendChild(td)
+					n++
+				}
+				table.appendChild(tr)
+			}
+			document.body.appendChild(table)
 		</script>
 	</body>
 </html>
