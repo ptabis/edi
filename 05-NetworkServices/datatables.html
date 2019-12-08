@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+    <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <title>DataTables</title>
+</head>
+<body>
+    <button id="button">Show people</button>
+    <script>
+        document.getElementById("button").onclick = function() {
+            let people = new XMLHttpRequest()
+            people.onreadystatechange = function() {
+                if(people.status == 200 && people.readyState == 4) {
+                    let p = JSON.parse(people.responseText)
+                    for(let i = 0; i < p.length; i++) {
+                        let li = document.createElement('li')
+                        li.innerText = p[i]['name'] + " " + p[i]['surname'].toUpperCase() + ", " + p[i]['country']
+                        document.getElementById('list').appendChild(li)
+                    }
+                }
+            }
+            people.open('GET', 'people.json')
+            people.send()
+        }
+        $(document).ready( function () {
+            $('people').DataTable();
+        } );
+    </script>
+</body>
+</html>

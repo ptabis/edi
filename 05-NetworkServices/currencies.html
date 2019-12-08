@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Kursy walut</title>
+</head>
+<body>
+    <h1>Kursy walut</h1>
+    <p id="currencies"></p>
+
+    <script>
+        let currencies = new XMLHttpRequest()
+        currencies.onreadystatechange = function() {
+            if(currencies.status == 200 && currencies.readyState == 4) {
+                let curs = JSON.parse(currencies.responseText)[0]['rates']
+                for(let i = 0; i < curs.length; i++) {
+                    if(curs[i]['code'] == "USD" || curs[i]['code'] == "EUR" || curs[i]['code'] == "GBP") {
+                        let p = document.createElement("p")
+                        p.innerHTML = "<h2>"+curs[i]['currency'] + " " + curs[i]['mid'] + " " + curs[i]['code']+"</h2>"
+                    document.getElementById("currencies").appendChild(p)
+                    }
+                }
+            }
+        }
+        currencies.open('GET', 'http://api.nbp.pl/api/exchangerates/tables/a/today/')
+        currencies.send()
+    </script>
+</body>
+</html>
