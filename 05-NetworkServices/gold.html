@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/billboard.js@1.11.0/dist/billboard.min.css">
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/billboard.js@1.11.0/dist/billboard.min.js"></script>
+    <title>Gold</title>
+</head>
+
+<body>
+    <div id="chart"></div>
+    <script>
+        let gold = new XMLHttpRequest()
+        gold.onreadystatechange = function () {
+            if (gold.status == 200 && gold.readyState == 4) {
+                let cols = []
+                let g = JSON.parse(gold.responseText)
+                for (let i = 0; i < g.length; i++) {
+                    cols.push([g[i]['data'], g[i]['cena']])
+                }
+
+                let chart = bb.generate({
+                    bindTo: "#chart",
+                    data: {
+                        type: "bar",
+                        columns: cols
+                    }
+                })
+                chart.axis.range({
+                    min: {
+                        y: 180
+                    }
+                })
+            }
+        }
+        gold.open('GET', 'http://api.nbp.pl/api/cenyzlota/last/10/?format=json')
+        gold.send()
+
+
+
+    </script>
+</body>
+
+</html>

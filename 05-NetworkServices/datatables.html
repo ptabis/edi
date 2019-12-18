@@ -1,34 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
-    <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
     <title>DataTables</title>
 </head>
+
 <body>
-    <button id="button">Show people</button>
+    <table id="people">
+        <thead>
+        <tr><th>name</th><th>surname</th><th>age</th><th>country</th><th>email</th></tr>
+        </thead>
+        <tbody></tbody>
+    </table>
     <script>
-        document.getElementById("button").onclick = function() {
-            let people = new XMLHttpRequest()
-            people.onreadystatechange = function() {
-                if(people.status == 200 && people.readyState == 4) {
-                    let p = JSON.parse(people.responseText)
-                    for(let i = 0; i < p.length; i++) {
-                        let li = document.createElement('li')
-                        li.innerText = p[i]['name'] + " " + p[i]['surname'].toUpperCase() + ", " + p[i]['country']
-                        document.getElementById('list').appendChild(li)
-                    }
+        let people = new XMLHttpRequest()
+        people.onreadystatechange = function () {
+            if (people.status == 200 && people.readyState == 4) {
+                let p = JSON.parse(people.responseText)
+                for (let i = 0; i < p.length; i++) {
+                    
+                    let tr = document.createElement('tr')
+                    
+                    let name = document.createElement('td')
+                    name.innerText = p[i]['name']
+                    tr.appendChild(name)
+
+                    let surname = document.createElement('td')
+                    surname.innerText = p[i]['surname']
+                    tr.appendChild(surname)
+
+                    let age = document.createElement('td')
+                    age.innerText = p[i]['age']
+                    tr.appendChild(age)
+
+                    let country = document.createElement('td')
+                    country.innerText = p[i]['country']
+                    tr.appendChild(country)
+
+                    let email = document.createElement('td')
+                    email.innerText = p[i]['email']
+                    tr.appendChild(email)
+
+                    document.getElementsByTagName('tbody')[0].appendChild(tr)
                 }
             }
-            people.open('GET', 'people.json')
-            people.send()
         }
-        $(document).ready( function () {
-            $('people').DataTable();
-        } );
+        people.open('GET', 'people.json')
+        people.send()
+        $(document).ready(function () {
+            $('#people').DataTable();
+        });
     </script>
 </body>
+
 </html>
