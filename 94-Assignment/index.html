@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Plan Zajęć</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+    body{text-align: center;}
+    table{width: 100%;}
+    th{background-color:bisque}
+    table{border: 1px solid black; margin: 0; border-collapse: collapse;}
+    tr,td,th{border: 1px solid black; margin: 0; padding: 0.25%;}
+    </style>
+</head>
+<body>
+    <p id="dane">
+        Patryk Tabiś<br>
+        WZISS1-1112<br>
+        Informatyka Stosowana<br>
+    </p>
+    <p id="plan">
+        <table id="timetable">
+            <tr><th>Termin</th><th>Dzień, godzina</th><th>Przedmiot</th><th>Typ</th><th>Nauczyciel</th><th>Sala</th></tr>
+        </table>
+    </p>
+    <script>
+        fetch('dokument.json').then(res => res.json()).then(json => {
+            let lessons = json['plan-zajec'].zajecia
+            for(let i = 0; i < lessons.length; i++) {
+                let lesson = document.createElement('tr')
+                let rows = ['termin', 'dzien', 'przedmiot', 'typ', 'nauczyciel', 'sala']
+                for(let j = 0; j < rows.length; j++) {
+                    let td = document.createElement('td')
+                    let txt = ""
+                    if(rows[j] == 'nauczyciel') { 
+                        txt = document.createTextNode(lessons[i]['nauczyciel']['__text'] || '-')
+                    } else if(rows[j] == 'dzien') {
+                        txt = document.createTextNode(lessons[i]['dzien']+" "+lessons[i]['od-godz']+" - "+lessons[i]['do-godz'] || '-')
+                    } else { 
+                        txt = document.createTextNode(lessons[i][rows[j]] || '-')
+                    }
+
+                    if(rows[j] == 'przedmiot') {
+                        td.classList += 'przedmiot'
+                        td.dataset.pl = lessons[i]['przedmiot']
+                        td.dataset.en = lessons[i]['przedmiot_angielski']
+                    }
+                    td.appendChild(txt)
+                    lesson.appendChild(td)
+                } 
+                if(lessons[i].kolokwium !== undefined) { 
+                    lesson.classList += 'kolokwium' 
+                    lesson.dataset.kolokwium = lessons[i].kolokwium.temat
+                }        
+
+                document.getElementById('timetable').appendChild(lesson)
+            }
+            $('.kolokwium').css('background-color', 'red')
+            $('.kolokwium').mouseover(function() {
+                alert($(this)[0].dataset.kolokwium)
+            })
+            $('.przedmiot').click(function() {
+                console.log($(this)[0])
+                if($(this)[0].dataset.pl == $(this).html()) $(this).html($(this)[0].dataset.en)
+                else $(this).html($(this)[0].dataset.pl)
+            })
+        })
+    </script>
+</body>
+</html>
